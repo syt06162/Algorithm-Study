@@ -10,7 +10,6 @@ for i in range(T):
     
     if N != 0:
         Q = deque(Q[1:-1].split(','))
-        print(Q)
     else:
         Q = deque([])
     

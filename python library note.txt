@@ -1,0 +1,76 @@
+파이썬 라이브러리 메모
+
+0. sys (빠른 입력 받기)
+import sys
+
+sys.stdin.readline()
+sys.stdin.readline().split()
+sys.stdin.readline().strip().split()
+
+
+1. stack (스택)
+별도의 라이브러리 없음
+stack = []
+stack.append()
+stack.pop()
+
+1-1. len(stack)이 필요한 경우나 peer 연산 (스택 최상단의 값만 보기) 필요한 경우
+stack = []
+top = -1
+
+peer : stack[top] 
+len(stack) == top+1
+
+
+2. queue (큐, 양방향 큐)
+from collections import deque
+
+2-1. 일반적인 큐
+Q = deque()
+Q.append()
+Q.popleft()
+
+2-2. 양방향 큐
+Q = deque()
+Q.append()
+Q.popleft()
+Q.appendleft()
+Q.pop()
+
+큐를 stack처럼 직접 구현할 경우 Q.pop(0) 연산은 O(n)임에 주의, 
+따라서 stack의 top 변수처럼 front와 rear 변수를 선언해서 구현할 것.
+큐의 max가 있을 때 (front+1)%max 처럼 활용.
+단 Q empty와 Q full을 구분 위해서는 max +1을 해줘야 한다.
+
+
+3. math (수학, 루트)
+import math
+
+3-1. 루트
+math.sqrt(num)
+또는 num**(1/2)
+
+3-2. 반올림, 올림, 내림
+round(3.1415) -> 3
+round(3.1415, 2) -> 3.14
+round(345.14, -1) -> 340
+
+math.ceil(3.14) -> 4
+math.floor(3.14) -> 3
+
+
+AA. 그외 유용한 것
+1. 리스트 원소 for문 없이 출력 -> print(*lst)
+lst = [1,2,3,4,5]
+print(*lst)  <=>  print(1,2,3,4,5)
+-> 1 2 3 4 5
+
+2. 문자열 원소들 사이에 (띄어쓰기) 넣기 -> " ".join(st)
+st = "ABC"
+print(" ".join(st))
+
+3. 리스트 복사
+lst1 = [1,2,3]
+lst2 = lst1  (둘이 같은 것을 가리키고 있어서, 어느 한 리스트의 값만 바꿔도 같이 바뀜)
+lst2 = lst1[:]  (값들을 그대로 복사해서 별도의 리스트 만듦)
+

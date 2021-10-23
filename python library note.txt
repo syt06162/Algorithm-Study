@@ -92,7 +92,7 @@ lst2 = lst1[:]  (값들을 그대로 복사해서 별도의 리스트 만듦)
 lst = [3,5,2,4,1]
 
 예) lst.sort()  -> lst 자체가 정렬됨.
-예) arr = lst.sorted()  -> lst는 냅두고 lst가 정렬된 값을 arr에 저장.
+예) arr = sorted(lst)  -> lst는 냅두고 lst가 정렬된 값을 arr에 저장.
 
 5-1. sort reverse
 lst.sort(reverse=True) -> lst 정렬하되 내림차순으로 정렬함.

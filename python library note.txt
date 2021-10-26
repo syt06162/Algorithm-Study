@@ -60,6 +60,18 @@ math.floor(3.14) -> 3
 
 
 AA. 그외 유용한 것
+0. call by value, call by reference
+파이썬에서 함수에서 인자로
+0-1. call by value : +변수, -튜플, -문자열
+0-2. call by reference (새로운 것 할당 말고, 객체를 직접 바꿔주는 경우): +리스트, +딕셔너리, +집합
+예)
+def changeValTest_1(arr: list):
+    arr = [21,32,31] => 원본 안 바뀜
+def changeValTest_2(arr: list):
+    arr.append(10) => 원본 바뀜
+    arr[0] = 10 => 원본 바뀜
+
+
 1. 리스트 원소 for문 없이 출력 -> print(*lst)
 lst = [1,2,3,4,5]
 print(*lst)  <=>  print(1,2,3,4,5)
@@ -116,6 +128,7 @@ lst = [ [6,2], [3,5], [10,1], [5, 1] ]
 lst.sort(key = lambda x: (x[0]))
 print(lst)
 # [[3, 5], [5, 1], [6, 2], [10, 1]]
+
 
 
 

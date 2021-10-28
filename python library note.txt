@@ -1,11 +1,18 @@
 파이썬 라이브러리 메모
 
-0. sys (빠른 입력 받기)
+0. sys (빠른 입력 받기, recursion limit 늘리기)
 import sys
 
+0-1. 빠른 입력
 sys.stdin.readline()
 sys.stdin.readline().split()
 sys.stdin.readline().strip().split()
+
+0-2. recursion limit 확인, 늘리기
+sys.getrecursionlimit() #기본은 1000 인듯. 채점서버마다 다를 수 있음.
+sys.setrecursionlimit(50*50) #2500까지 재귀 가능
+그러나 setrecursionlimit()을 해줬다 하더라도 너무 큰 수인경우 채점서버에서 그만큼 지원하지 않으면 (Segmentation fault) 오류
+이럴때는 recursion을 사용하지 않는 방법으로 풀어줘야함. 예) DFS -> BFS
 
 
 1. stack (스택)
@@ -128,8 +135,6 @@ lst = [ [6,2], [3,5], [10,1], [5, 1] ]
 lst.sort(key = lambda x: (x[0]))
 print(lst)
 # [[3, 5], [5, 1], [6, 2], [10, 1]]
-
-
 
 
 

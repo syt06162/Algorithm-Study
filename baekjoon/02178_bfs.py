@@ -32,5 +32,3 @@ for i in range(size_I):
 
 for i in range(size_I):
     print(graph[i])
-
-#print(bfs(graph, 0, 0, size_I-1, size_J-1))

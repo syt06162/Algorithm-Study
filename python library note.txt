@@ -1,4 +1,6 @@
-파이썬 라이브러리 메모
+파이썬 라이브러리 메모.
+: python for coding test 에서 만든 코드들은 일단은 깃허브가 개인 저장소에 따로 보관. 
+나중엔 팀 노트로 만들어둘것
 
 0. sys (빠른 입력 받기, recursion limit 늘리기)
 import sys

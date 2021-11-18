@@ -70,6 +70,7 @@ math.floor(3.14) -> 3
 
 4. heapq (우선순위 큐, 최소힙, 최대힙)
 # 기본적으로 push 할때 (a,b)로 푸쉬를 하면 앞의 것 (a) 를 기준으로 "최소 힙"으로 구현한다.
+# 첫번째 원소(a)가 같은 경우 두번째 원소 ... 을 기준으로 최소힙이 됨
 # 만약 최대 힙으로 이용하고 싶으면, 푸쉬할 때 -를 붙여서 push 한 후, pop 할때 다시 -를 붙여주면 된다.
 
 import heapq
@@ -77,6 +78,21 @@ import heapq
 q = []
 heapq.heappush(q, (0, start))
 rank, val = heapq.heappop(q)
+
+
+5. 순열, 조합 (itertools - permutations, combinations)
+
+from itertools import permutations
+data = [1,2]
+for x in permutations(data, 2):
+    print(list(x))
+
+from itertools import combinations
+data = [1,2,3]
+for x in combinations(data,2):
+    print(list(x))
+
+
 
 
 AA. 그외 유용한 것

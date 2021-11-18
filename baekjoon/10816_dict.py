@@ -15,5 +15,5 @@ for num in findLst:
     if num in numDic:
         print(numDic[num], end=" ")
     else:
-        print(-1, end=" ")
+        print(0, end=" ")
 

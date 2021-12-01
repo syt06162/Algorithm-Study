@@ -13,7 +13,7 @@ result = INF
 
 while left < N:
     hap = sumLst[right] - sumLst[left] #left~right-1 까지의 합. right은 항상 더할것 다음 값을 가리킴
-    if hap == S:
+    if hap >= S:
         temp = right - left
         if temp < result: #더 작은 길이가 있으면 넣기
             result = temp

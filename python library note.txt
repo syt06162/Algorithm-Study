@@ -81,7 +81,6 @@ rank, val = heapq.heappop(q)
 
 
 5. 순열, 조합 (itertools - permutations, combinations)
-
 from itertools import permutations
 data = [1,2]
 for x in permutations(data, 2):
@@ -92,6 +91,13 @@ data = [1,2,3]
 for x in combinations(data,2):
     print(list(x))
 
+
+6. 이진 탐색 (bisect - bisect_left, bisect_right)
+from bisect import bisect_left, bisect_right 
+nums = [4, 5, 5, 5, 5, 5, 5, 5, 5, 8] 
+n = 6
+print(bisect_left(nums, n)) # 찾는 값이 여러개이면 제일 왼쪽 인덱스 반환
+print(bisect_right(nums, n)) # 찾는 값이 여러개이면 제일 오른쪽 인덱스 반환
 
 
 

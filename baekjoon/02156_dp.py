@@ -15,4 +15,4 @@ for i in range(3,N):
   dp[i] = max(dp[i-3]+lst[i-1]+lst[i], dp[i-2]+lst[i], dp[i-1])
 
 print(max(dp))
-print(dp)
+# print(dp)

@@ -10,11 +10,13 @@
 void setDecresingInput(int arr[], int size) {
 	for (int i = 0; i < size; i++)
 		arr[i] = size - i;
-	printf("■input: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2], arr[size - 3], arr[size - 2], arr[size - 1]);
+	printf("■input: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2]
+		, arr[size - 3], arr[size - 2], arr[size - 1]);
 }
 
 void checkCorrectAnswer(int arr[], int size) {
-	printf("■output: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2], arr[size - 3], arr[size - 2], arr[size - 1]);
+	printf("■output: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2], 
+		arr[size - 3], arr[size - 2], arr[size - 1]);
 	for (int i = 0; i < size; i++) {
 		if (arr[i] != i + 1) {
 			printf("wrong answer, with size %d\n", size);
@@ -36,7 +38,8 @@ void bubbleSort(int arr[], int size) {
 		}
 	}
 }
-// inner iteration, we can start with i+1. Because for every iteration, the first one is sorted.
+// inner iteration, we can start with i+1,
+// because for every iteration, the first one is sorted.
 
 
 void insertionSort(int arr[], int size) {
@@ -206,7 +209,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr1, N1);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr2, N2);
@@ -215,7 +218,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr2, N2); 
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
@@ -224,7 +227,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 	
 
@@ -236,7 +239,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr1, N1);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr2, N2);
@@ -245,7 +248,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr2, N2);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
@@ -254,7 +257,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 
@@ -266,7 +269,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr1, N1);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr2, N2);
@@ -275,7 +278,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr2, N2);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
@@ -284,7 +287,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 
@@ -296,7 +299,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr1, N1);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr2, N2);
@@ -305,7 +308,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr2, N2);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
@@ -314,7 +317,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 
@@ -326,7 +329,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr1, N1);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr2, N2);
@@ -335,7 +338,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr2, N2);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
@@ -344,7 +347,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 
@@ -356,7 +359,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr1, N1);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr2, N2);
@@ -365,7 +368,7 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr2, N2);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
@@ -374,12 +377,13 @@ int main() {
 	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
 	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
-	printf("시간: %f\n", times[cnt++]);
+	printf("Execution Time: %f\n", times[cnt++]);
 	printf("\n");
 
 	// time table
 	printf("\n\n");
-	printf("%10s %10s %10s %10s %10s %10s %10s", "", "Bubble", "Insertion", "Merge", "Quick", "Radix", "Bucket");
+	printf("%10s %10s %10s %10s %10s %10s %10s", "", "Bubble", "Insertion", 
+		"Merge", "Quick", "Radix", "Bucket");
 	printf("\n%10s ", "N = 1000");
 	for (int i = 0; i < 18; i = i + 3) printf("%10f ", times[i]);
 	printf("\n%10s ", "N = 5000");

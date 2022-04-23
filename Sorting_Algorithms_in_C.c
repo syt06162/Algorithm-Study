@@ -1,8 +1,11 @@
-#include <stdio.h>
+
 #define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 #define N1 100
 #define N2 500
-#define N3 1000
+#define N3 10000
 #define SWAP(x,y) {int t; t=x; x=y; y=t;}
 
 void setDecresingInput(int arr[], int size) {
@@ -19,7 +22,7 @@ void checkCorrectAnswer(int arr[], int size) {
 		}
 	}
 	printf("■output: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2], arr[size - 3], arr[size - 2], arr[size - 1]);
-	printf("correct answer, with size %d\n\n", size);
+	printf("correct answer, with size %d\n", size);
 	return;
 }
 
@@ -111,12 +114,66 @@ void quickSort(int arr[], int start, int end) {
 	quickSort(arr, l + 1, end);
 }
 
+void radixSort(int arr[], int size) {
+	int maxExp = 1;
+	int max = arr[0];
+	for (int i = 0; i < size; i++) {
+		if (arr[i] > max)
+			max = arr[i];
+	}
+	while (max != 0) {
+		max /= 10;
+		maxExp *= 10;
+	}
+	maxExp /= 10;
+
+	int nowExp = 1;
+	int* nowArr = (int*)malloc(sizeof(int) * size);
+
+	// using counting sort
+	while (nowExp <= maxExp) {
+		int bucket[10] = { 0,0,0,0,0,0,0,0,0,0 };
+		for (int i = 0; i < size; i++)
+			bucket[arr[i] / nowExp % 10]++;
+		for (int i = 1; i < 10; i++)
+			bucket[i] += bucket[i - 1];
+		for (int i = size - 1; i >= 0; i--) //to stable
+			nowArr[--bucket[arr[i] / nowExp % 10]] = arr[i];
+		for (int i = 0; i < size; i++)
+			arr[i] = nowArr[i];
+		nowExp *= 10;
+	}
+}
+
+
 int main() {
 	int arr1[N1];
 	int arr2[N2];
 	int arr3[N3];
 
-	setDecresingInput(arr1, N1);
-	bubbleSort(arr1, N1);
-	checkCorrectAnswer(arr1, N1);
+	clock_t start, end;
+	
+	setDecresingInput(arr3, N3);
+	start = clock();
+	bubbleSort(arr3, N3);
+	end = clock();
+	checkCorrectAnswer(arr3, N3);
+	printf("시간: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+	printf("\n");
+
+	setDecresingInput(arr3, N3);
+	start = clock();
+	insertionSort(arr3, 0, N3-1);
+	end = clock();
+	checkCorrectAnswer(arr3, N3);
+	printf("시간: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+	printf("\n");
+
+	setDecresingInput(arr3, N3);
+	start = clock();
+	mergeSort(arr3, N3, 0, N3-1);
+	end = clock();
+	checkCorrectAnswer(arr3, N3);
+	printf("시간: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+	printf("\n");
 }

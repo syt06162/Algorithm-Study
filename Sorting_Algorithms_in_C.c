@@ -55,6 +55,34 @@ void insertionSort(int arr[], int size) {
 }
 // while문안에서 shift 하는것이 swap보다 약간 더 빠를거라 기대함.
 
+void mergeSort(int arr[], int size, int start, int end) {
+	if (start == end) return;
+
+	int mid = (start + end) / 2;
+	mergeSort(arr, size, start, mid);
+	mergeSort(arr, size, mid + 1, end);
+
+	int* sortedArr = (int*)malloc(sizeof(int) * (end - start + 1));
+
+	int l = start, r = mid + 1, s = 0;
+	while (l <= mid && r <= end) {
+		if (arr[l] < arr[r])
+			sortedArr[s++] = arr[l++];
+		else
+			sortedArr[s++] = arr[r++];
+	}
+	while (l <= mid)
+		sortedArr[s++] = arr[l++];
+
+	while (r <= end)
+		sortedArr[s++] = arr[r++];
+
+	s = 0;
+	for (int i = start; i <= end; i++, s++) {
+		arr[i] = sortedArr[s];
+	}
+}
+// 크기 1이면 그대로 리턴, 그외에는 절반씩 recursive 하고, 절반 sort 된 상태에서 각자 sorting
 
 int main() {
 	int arr1[N1];

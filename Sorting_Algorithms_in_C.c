@@ -1,10 +1,9 @@
-
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#define N1 100
-#define N2 500
+
+#define N1 1000
+#define N2 5000
 #define N3 10000
 #define SWAP(x,y) {int t; t=x; x=y; y=t;}
 
@@ -15,25 +14,20 @@ void setDecresingInput(int arr[], int size) {
 }
 
 void checkCorrectAnswer(int arr[], int size) {
+	printf("■output: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2], arr[size - 3], arr[size - 2], arr[size - 1]);
 	for (int i = 0; i < size; i++) {
 		if (arr[i] != i + 1) {
 			printf("wrong answer, with size %d\n", size);
 			return;
 		}
 	}
-	printf("■output: [%d %d %d ... %d %d %d]\n", arr[0], arr[1], arr[2], arr[size - 3], arr[size - 2], arr[size - 1]);
 	printf("correct answer, with size %d\n", size);
 	return;
 }
 
-void printArray(int arr[], int size) {
-	for (int i = 0; i < size; i++)
-		printf("%3d ", arr[i]);
-	printf("\n");
-}
-
 // Assume that the size of all input arrays is greater than 1,
 // and also there is no same value ////
+
 void bubbleSort(int arr[], int size) {
 	for (int i = 0; i < size - 1; i++) {
 		for (int j = i + 1; j < size; j++) {
@@ -42,7 +36,8 @@ void bubbleSort(int arr[], int size) {
 		}
 	}
 }
-// 안에 반복문은 j=0부터 할 필요없이, i+1부터 하면된다. 왜냐하면 앞에서부터 1개씩은 정렬되기 때문.
+// inner iteration, we can start with i+1. Because for every iteration, the first one is sorted.
+
 
 void insertionSort(int arr[], int size) {
 	int key, j;
@@ -56,7 +51,8 @@ void insertionSort(int arr[], int size) {
 		arr[j + 1] = key;
 	}
 }
-// while문안에서 shift 하는것이 swap보다 약간 더 빠를거라 기대함.
+// In the while statement, Shift may be a little faster than SWAP
+
 
 void mergeSort(int arr[], int size, int start, int end) {
 	if (start == end) return;
@@ -88,7 +84,6 @@ void mergeSort(int arr[], int size, int start, int end) {
 	free(sortedArr);
 
 }
-// 크기 1이면 그대로 리턴, 그외에는 절반씩 recursive 하고, 절반 sort 된 상태에서 각자 sorting
 
 void quickSort(int arr[], int start, int end) {
 	if (start >= end) return;
@@ -168,7 +163,7 @@ void bucketSort(int arr[], int size) {
 			max = arr[i];
 	}
 
-	int place;
+	int place; // find the right bucket place
 	for (int i = 0; i < size; i++) {
 		place = (arr[i] - min) * bucketNum / (max - min);
 		if (place == bucketNum) place--;
@@ -176,11 +171,9 @@ void bucketSort(int arr[], int size) {
 		bucket[place][bucketSize[place]++] = arr[i];
 	}
 	for (int i = 0; i < bucketNum; i++) {
+		// in bucket, we use insertion sort
 		insertionSort(bucket[i], bucketSize[i]);
 	}
-
-	printf("%d\n", 2323);
-
 
 	int idx = 0;
 	for (int i = 0; i < bucketNum; i++) {
@@ -201,29 +194,198 @@ int main() {
 	int arr2[N2];
 	int arr3[N3];
 
-	clock_t start, end;
+	clock_t startTime, endTime;
+	double times[18];
+	int cnt = 0;
 	
+	// ---1. Bubble Sort
+	printf("\n\n---1. Bubble Sort:\n");
+	setDecresingInput(arr1, N1);
+	startTime = clock();
+	bubbleSort(arr1, N1);
+	endTime = clock();
+	checkCorrectAnswer(arr1, N1);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr2, N2);
+	startTime = clock();
+	bubbleSort(arr2, N2);
+	endTime = clock();
+	checkCorrectAnswer(arr2, N2); 
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
 	setDecresingInput(arr3, N3);
-	start = clock();
+	startTime = clock();
 	bubbleSort(arr3, N3);
-	end = clock();
+	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
-	printf("시간: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+	
+
+	// ---2. Insertion Sort
+	printf("\n\n---2. Insertion Sort:\n");
+	setDecresingInput(arr1, N1);
+	startTime = clock();
+	insertionSort(arr1, N1);
+	endTime = clock();
+	checkCorrectAnswer(arr1, N1);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr2, N2);
+	startTime = clock();
+	insertionSort(arr2, N2);
+	endTime = clock();
+	checkCorrectAnswer(arr2, N2);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
-	start = clock();
-	insertionSort(arr3, 0, N3-1);
-	end = clock();
+	startTime = clock();
+	insertionSort(arr3, N3);
+	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
-	printf("시간: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+
+	// ---3. Merge Sort
+	printf("\n\n---3. Merge Sort:\n");
+	setDecresingInput(arr1, N1);
+	startTime = clock();
+	mergeSort(arr1, 0, 0, N1 - 1);
+	endTime = clock();
+	checkCorrectAnswer(arr1, N1);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr2, N2);
+	startTime = clock();
+	mergeSort(arr2, 0, 0, N2 - 1);
+	endTime = clock();
+	checkCorrectAnswer(arr2, N2);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
 	printf("\n");
 
 	setDecresingInput(arr3, N3);
-	start = clock();
-	mergeSort(arr3, N3, 0, N3-1);
-	end = clock();
+	startTime = clock();
+	mergeSort(arr3, 0, 0, N3 - 1);
+	endTime = clock();
 	checkCorrectAnswer(arr3, N3);
-	printf("시간: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
 	printf("\n");
+
+
+	// ---4. Quick Sort
+	printf("\n\n---4. Quick Sort:\n");
+	setDecresingInput(arr1, N1);
+	startTime = clock();
+	quickSort(arr1, 0, N1 - 1);
+	endTime = clock();
+	checkCorrectAnswer(arr1, N1);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr2, N2);
+	startTime = clock();
+	quickSort(arr2, 0, N2 - 1);
+	endTime = clock();
+	checkCorrectAnswer(arr2, N2);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr3, N3);
+	startTime = clock();
+	quickSort(arr3, 0, N3 - 1);
+	endTime = clock();
+	checkCorrectAnswer(arr3, N3);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+
+	// ---5. Radix Sort
+	printf("\n\n---5. Radix Sort:\n");
+	setDecresingInput(arr1, N1);
+	startTime = clock();
+	radixSort(arr1, N1);
+	endTime = clock();
+	checkCorrectAnswer(arr1, N1);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr2, N2);
+	startTime = clock();
+	radixSort(arr2, N2);
+	endTime = clock();
+	checkCorrectAnswer(arr2, N2);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr3, N3);
+	startTime = clock();
+	radixSort(arr3, N3);
+	endTime = clock();
+	checkCorrectAnswer(arr3, N3);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+
+	// ---6. Bucket Sort
+	printf("\n\n---6. Bucket Sort:\n");
+	setDecresingInput(arr1, N1);
+	startTime = clock();
+	bucketSort(arr1, N1);
+	endTime = clock();
+	checkCorrectAnswer(arr1, N1);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr2, N2);
+	startTime = clock();
+	bucketSort(arr2, N2);
+	endTime = clock();
+	checkCorrectAnswer(arr2, N2);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	setDecresingInput(arr3, N3);
+	startTime = clock();
+	bucketSort(arr3, N3);
+	endTime = clock();
+	checkCorrectAnswer(arr3, N3);
+	times[cnt] = (double)(endTime - startTime)*1000 / CLOCKS_PER_SEC;
+	printf("시간: %f\n", times[cnt++]);
+	printf("\n");
+
+	// time table
+	printf("\n\n");
+	printf("%10s %10s %10s %10s %10s %10s %10s", "", "Bubble", "Insertion", "Merge", "Quick", "Radix", "Bucket");
+	printf("\n%10s ", "N = 1000");
+	for (int i = 0; i < 18; i = i + 3) printf("%10f ", times[i]);
+	printf("\n%10s ", "N = 5000");
+	for (int i = 1; i < 18; i = i + 3) printf("%10f ", times[i]);
+	printf("\n%10s ", "N = 10000");
+	for (int i = 2; i < 18; i = i + 3) printf("%10f ", times[i]);
+
+	printf("\n\n");
 }

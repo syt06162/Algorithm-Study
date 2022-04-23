@@ -84,6 +84,9 @@ void mergeSort(int arr[], int size, int start, int end) {
 	for (int i = start; i <= end; i++, s++) {
 		arr[i] = sortedArr[s];
 	}
+
+	free(sortedArr);
+
 }
 // 크기 1이면 그대로 리턴, 그외에는 절반씩 recursive 하고, 절반 sort 된 상태에서 각자 sorting
 
@@ -143,6 +146,53 @@ void radixSort(int arr[], int size) {
 			arr[i] = nowArr[i];
 		nowExp *= 10;
 	}
+	free(nowArr);
+}
+
+void bucketSort(int arr[], int size) {
+	int bucketNum = size / 20;
+	int** bucket = (int**)malloc(sizeof(int**) * bucketNum);
+	for (int i = 0; i < bucketNum; i++)
+		bucket[i] = (int*)malloc(sizeof(int*) * size);
+
+	int* bucketSize = (int*)malloc(sizeof(int*) * bucketNum);
+	for (int i = 0; i < bucketNum; i++) {
+		bucketSize[i] = 0; //each bucket's element count
+	}
+
+	int min = arr[0], max = arr[0];
+	for (int i = 0; i < size; i++) {
+		if (arr[i] < min)
+			min = arr[i];
+		else if (arr[i] > max)
+			max = arr[i];
+	}
+
+	int place;
+	for (int i = 0; i < size; i++) {
+		place = (arr[i] - min) * bucketNum / (max - min);
+		if (place == bucketNum) place--;
+
+		bucket[place][bucketSize[place]++] = arr[i];
+	}
+	for (int i = 0; i < bucketNum; i++) {
+		insertionSort(bucket[i], bucketSize[i]);
+	}
+
+	printf("%d\n", 2323);
+
+
+	int idx = 0;
+	for (int i = 0; i < bucketNum; i++) {
+		for (int j = 0; j < bucketSize[i]; j++) {
+			arr[idx++] = bucket[i][j];
+		}
+	}
+
+	for (int i = 0; i < bucketNum; i++) {
+		free(bucket[i]);
+	}
+	free(bucket);
 }
 
 

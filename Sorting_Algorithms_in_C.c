@@ -84,6 +84,33 @@ void mergeSort(int arr[], int size, int start, int end) {
 }
 // 크기 1이면 그대로 리턴, 그외에는 절반씩 recursive 하고, 절반 sort 된 상태에서 각자 sorting
 
+void quickSort(int arr[], int start, int end) {
+	if (start >= end) return;
+
+	int mid = (start + end) / 2;
+	SWAP(arr[mid], arr[end]);
+
+	int pivot = arr[end];
+	int l = start, r = end - 1;
+	while (l <= r) {
+		while (arr[l] < pivot && l < end) // l can move start to end
+			l++;
+		while (arr[r] > pivot && r > start) // r can move end-1 to start
+			r--;
+		if (l < r) {
+			SWAP(arr[l], arr[r]);
+		}
+		else if (l == r) {
+			break;
+		}
+	}
+	SWAP(arr[l], arr[end]);
+	// now pivot index is 'l'
+
+	quickSort(arr, start, l - 1);
+	quickSort(arr, l + 1, end);
+}
+
 int main() {
 	int arr1[N1];
 	int arr2[N2];

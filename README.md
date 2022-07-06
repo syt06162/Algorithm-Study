@@ -1,7 +1,6 @@
 # Study-Algorithm
--------------
 개인적으로 알고리즘과 프로그래밍 언어의 기초 문법을 공부한 것을 기록
-
+   
 ## 폴더 구성
 ### 1. algorithm-skill-note
 기본적인 알고리즘(BFS, sorting 등)들을 "파이썬"으로 작성   

@@ -15,11 +15,11 @@ Y, X = 0, 0
 dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
 
-def printmap():
-    for i in range(N):
-        for j in range(M):
-            print(maze[i][j], end="")
-        print()
+# def printmap():
+#     for i in range(N):
+#         for j in range(M):
+#             print(maze[i][j], end="")
+#         print()
 
 def bfs(Y, X):
     Q = deque()
@@ -29,8 +29,8 @@ def bfs(Y, X):
 
     finishFlag = False
     while Q:
-        print()
-        printmap()
+        # print()
+        # printmap()
         y,x, step = Q.popleft()
         step += 1
         for i in range(4):

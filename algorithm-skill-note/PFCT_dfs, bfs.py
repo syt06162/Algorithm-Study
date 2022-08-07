@@ -9,6 +9,11 @@ def dfs(graph: list, v:int, visited: list):
         if visited[i] == False:
             dfs(graph, i, visited)
 
+
+
+# bfs에서 중요한 점은, visited=True 를 어디에 처리할지이다.
+# Q에서 pop 하고나서 처리할 경우 여러개의 같은 것이 중복으로 Q에 들어가게 될 수도 있으니,
+### 반드시 for문 안에서 Q에 삽입(append)할 때 visited를 True로 바꾸자.
 def bfs(graph, start, visited):
     Q = deque()
     visited[start] = True
@@ -20,6 +25,7 @@ def bfs(graph, start, visited):
 
         for i in graph[num]:
             if visited[i]==False:
+                # visited true 처리하는 것의 위치 기억
                 visited[i] = True
                 Q.append(i)
 

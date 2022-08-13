@@ -10,6 +10,16 @@ sys.stdin.readline()
 sys.stdin.readline().split()
 sys.stdin.readline().strip().split()
 
+split()에 기본이 공백(스페이스)이므로 split()을 사용하는 경우에는 strip()을 굳이 사용하지 않아도 됨.
+단, 그러나 만약 split() 없이 문자열을 입력받는 경우는 반드시 strip() 또는 rstrip()을 해줘야 함.
+* 문자열 입력 받는 경우 예시:
+sys.stdin.readline().rstrip()
+* 정수 입력 받는 경우: strip()을 해주는 것이 맞지만, int() 씌울경우 자동으로 사라지는 듯 하다.
+int(sys.stdin.readline())
+
+** 정수 띄어쓰기로 입력받아서 리스트로 각각 저장하기: 공식처럼 외우면 좋음
+lst = list(map(int, sys.stdin.readline().split()))
+
 0-2. recursion limit 확인, 늘리기
 sys.getrecursionlimit() #기본은 1000 인듯. 채점서버마다 다를 수 있음.
 sys.setrecursionlimit(50*50) #2500까지 재귀 가능

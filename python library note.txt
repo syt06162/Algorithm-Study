@@ -10,6 +10,16 @@ sys.stdin.readline()
 sys.stdin.readline().split()
 sys.stdin.readline().strip().split()
 
+split()에 기본이 공백(스페이스)이므로 split()을 사용하는 경우에는 strip()을 굳이 사용하지 않아도 됨.
+단, 그러나 만약 split() 없이 문자열을 입력받는 경우는 반드시 strip() 또는 rstrip()을 해줘야 함.
+* 문자열 입력 받는 경우 예시:
+sys.stdin.readline().rstrip()
+* 정수 입력 받는 경우: strip()을 해주는 것이 맞지만, int() 씌울경우 자동으로 사라지는 듯 하다.
+int(sys.stdin.readline())
+
+** 정수 띄어쓰기로 입력받아서 리스트로 각각 저장하기: 공식처럼 외우면 좋음
+lst = list(map(int, sys.stdin.readline().split()))
+
 0-2. recursion limit 확인, 늘리기
 sys.getrecursionlimit() #기본은 1000 인듯. 채점서버마다 다를 수 있음.
 sys.setrecursionlimit(50*50) #2500까지 재귀 가능
@@ -209,6 +219,7 @@ a_2 = bin(a)
 => a_2 == '0b101010'
 => type == str
 
+
 8. map 사용법 정리
 map은 '반복 가능한 객체' (리스트, 튜플, 문자열, range), (딕셔너리, 세트(집합))를 넣음.
 >>> a = list(map(str, range(10)))
@@ -217,4 +228,22 @@ map은 '반복 가능한 객체' (리스트, 튜플, 문자열, range), (딕셔�
 * map(적용할함수, 반복가능한객체) : 리턴 = 반복가능한 객체의 요소를 각각 해당 함수 적용한 결과
  print(list(map(lambda x: (x ** 2), range(5))))
 >>> [0, 1, 4, 9, 16]
+
+
+9. ord()
+아스키코드를 십진수로 바꾸기.
+int()로 감싸야 진짜 정수 나옴.
+
+예) x = int(ord('c')-ord('a'))
+x값 = 2
+(int로 안 감싸도 나오긴 하다.)
+
+
+10. INF (무한대, 인피니티, infinite)
+INF = 999999 처럼 단순 숫자를 적어도 좋지만 확실하게 하려면 10억 정도를 적는게 좋다.
+예) INF = 987654321
+
+또는 지수를 이용해 1e9 처럼 작성해도 됨.
+* 추천 방법
+예) INF = int(1e9) 
 

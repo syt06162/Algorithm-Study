@@ -12,9 +12,9 @@ def union(a, b):
     pa = find_parent(a)
     pb = find_parent(b)
     if pa < pb:
-        parent[b] = pa
+        parent[pb] = pa
     else:
-        parent[a] = pb
+        parent[pa] = pb
 
 for i in range(M):
     command, a, b= map(int, sys.stdin.readline().split())

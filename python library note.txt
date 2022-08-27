@@ -264,3 +264,27 @@ INF = 999999 처럼 단순 숫자를 적어도 좋지만 확실하게 하려면 
 * 추천 방법
 예) INF = int(1e9) 
 
+
+
+
+11. dict 딕셔너리 관련 함수
+
+a = dict()
+
+a.keys()
+a.values()
+a.items() -> (key, value) 튜플 쌍들 모임.
+
+함수인 것을 기억! a.keys 로 사용 할 수 없다!
+
+* add:
+a['1'] = 'c'
+
+
+
+12. set 집합 관련 함수
+
+a = set()
+a.add(1)
+a.update([1,2])
+a.remove(3)

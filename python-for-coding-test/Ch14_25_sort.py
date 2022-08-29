@@ -1,4 +1,4 @@
-# Ch13_25
+# Ch14_25
 # https://school.programmers.co.kr/learn/courses/30/lessons/42889
 # 핵심: 0으로 나눌때는 예외처리
 

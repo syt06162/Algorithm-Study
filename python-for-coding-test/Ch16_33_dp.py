@@ -1,4 +1,4 @@
-# Ch15_33
+# Ch16_33
 # boj 14502
 
 import sys

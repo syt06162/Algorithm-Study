@@ -1,4 +1,4 @@
-# Ch15_32
+# Ch16_32
 # boj 1932
 
 import sys

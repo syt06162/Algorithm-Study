@@ -1,4 +1,4 @@
-# Ch15_36
+# Ch16_36
 # 핵심: MR 2차원
 
 import sys

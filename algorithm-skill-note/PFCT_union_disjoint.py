@@ -1,5 +1,11 @@
 import sys
 
+# union find 핵심 기억할것
+# 1. 함수들 원형 외우기
+# 2. 반드시! 함수 외 부분에서는 parent[a] 직접 사용 X, find_parent(a) 로 사용 O !!!!
+#    그래야 정렬과 동시에 find가 된다. 반드시 find_parent() 함수로만 사용!
+
+
 def find_parent(parent: list, x:int):
     if parent[x] != x:
         parent[x] = find_parent(parent, parent[x])

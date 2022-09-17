@@ -6,14 +6,14 @@ import sys
 #    그래야 정렬과 동시에 find가 된다. 반드시 find_parent() 함수로만 사용!
 
 
-def find_parent(parent: list, x:int):
+def find_parent(x):
     if parent[x] != x:
-        parent[x] = find_parent(parent, parent[x])
+        parent[x] = find_parent(parent[x])
     return parent[x]
 
-def union_parent(parent, a, b):
-    a = find_parent(parent, a)
-    b = find_parent(parent, b)
+def union_parent(a, b):
+    a = find_parent(a)
+    b = find_parent(b)
 
     if a<b:
         parent[b] = a

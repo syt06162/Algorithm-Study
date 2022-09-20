@@ -289,6 +289,10 @@ a.add(1)
 a.update([1,2])
 a.remove(3)
 
+차집합 교집합 합집합
+a.difference(b)
+a.intersection(b)
+a.union(b)
 
 
 13. 꼼수로 쓸때 random 함수

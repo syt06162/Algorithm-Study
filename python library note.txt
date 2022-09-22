@@ -300,3 +300,7 @@ import random
 print(random.random())
 
 >>> 0이상 1미만의 실수
+
+
+14. 파이썬 format
+print(format(ans,".2f"))

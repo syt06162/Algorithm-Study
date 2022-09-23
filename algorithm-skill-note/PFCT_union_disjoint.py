@@ -11,6 +11,8 @@ def find_parent(x):
         parent[x] = find_parent(parent[x])
     return parent[x]
 
+# 크루스칼에서 이미 연결된걸 주어지거나, 사이클을 사전에 만들고 시작해야할때에는 union 해서는 안된다
+# 즉 엄밀히 말하면 find_parent(a) == find_parent(b) 인 상황에서 union 하는 경우 오류 난다 !!!!!
 def union_parent(a, b):
     a = find_parent(a)
     b = find_parent(b)

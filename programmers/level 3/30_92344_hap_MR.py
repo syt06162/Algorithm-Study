@@ -19,6 +19,7 @@ def solution(board, skill):
     for i in range(0,H+1):
         for j in range(1,W+1):
             imosBoard[i][j] += imosBoard[i][j-1]
+            
     # board 대입
     for i in range(H):
         for j in range(W):

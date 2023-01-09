@@ -91,15 +91,34 @@ rank, val = heapq.heappop(q)
 
 
 5. 순열, 조합 (itertools - permutations, combinations)
+ - 순열 : permutation"s"
 from itertools import permutations
 data = [1,2]
 for x in permutations(data, 2):
     print(list(x))
 
+- 조합 : combination"s"
 from itertools import combinations
 data = [1,2,3]
 for x in combinations(data,2):
     print(list(x))
+
+5-1. 중복순열, 중복조합 (itertools - product, combinations_with_replacement)
+- 중복순열 : product 
+(얘만 "s" 없음 주의!!!)
+(얘만 repeat= 으로 값을 줘야한다 !!!)
+from itertools import product
+data = [1,2,3]
+for x in product(data, repeat=2):
+    print(list(x))
+
+- 중복조합 : combinations_with_replacement
+from itertools import combinations_with_replacement
+data = [1,2,3]
+for x in combinations_with_replacement(data, 2):
+    print(list(x))
+
+
 
 
 6. 이진 탐색 (bisect - bisect_left, bisect_right)

@@ -10,6 +10,7 @@ for i in range(e):
     graph[a].append(b)
     indegree[b] += 1
 
+# 위상정렬: indegree 0을, deque로.
 def topology_sort():
     q = deque()
     result = []

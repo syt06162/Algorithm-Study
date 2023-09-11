@@ -1,40 +1,35 @@
 import sys
+input = sys.stdin.readline
 
-def find_parent(parent: list, x:int):
-    if parent[x] != x:
-        parent[x] = find_parent(parent, parent[x])
+V, E = map(int, input().split())
+parent = [i for i in range(V+1)]
+edges = []
+for i in range(E):
+    a, b, cost = map(int, input().split())
+    edges.append((cost, a, b))
+
+# find_parent, union_parent
+def find_parent(x):
+    if x!=parent[x]:
+        parent[x] = find_parent(parent[x])
     return parent[x]
 
-def union_parent(parent, a, b):
-    a = find_parent(parent, a)
-    b = find_parent(parent, b)
-
-    if a<b:
-        parent[b] = a
-    else:
+def union(a, b):
+    a = find_parent(a)
+    b = find_parent(b)
+    if a>b:
         parent[a] = b
-
-
-# 입력받기
-v, e = map(int, input().split())
-parent = [0]*(v+1) #0번지는 사용하지 않음
-
-for i in range(1, v+1):
-    parent[i] = i
-
-edges = []
-result = 0 # sum of cost (result)
-
-for i in range(e):
-    a, b, cost = map(int, sys.stdin.readline().split())
-    edges.append((cost,a,b))
+    else:
+        parent[b] = a
 
 edges.sort()
 
-for edge in edges:
-    cost, a, b = edge
-    if find_parent(parent, a) != find_parent(parent, b):
-        union_parent(parent, a,b)
+result = 0
+for cost, a, b in edges:
+    pa = find_parent(a)
+    pb = find_parent(b)
+    if pa!=pb:
+        union(pa, pb)
         result += cost
 
 print(result)
@@ -51,4 +46,5 @@ print(result)
 4 7 13
 5 6 53
 6 7 25
-''' # 159
+''' 
+# 159

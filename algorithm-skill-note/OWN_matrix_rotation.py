@@ -9,3 +9,13 @@ def rotate_90(old):
             new[j][N-1-i] = old[i][j]
     
     return new
+
+# easy
+original = [[1, 2], [3, 4], [5, 6]]
+rotated = list(zip(*original[::-1]))
+
+for i in range(len(original)):
+    print(*original[i])
+print()    
+for i in range(len(rotated)):
+    print(*rotated[i])

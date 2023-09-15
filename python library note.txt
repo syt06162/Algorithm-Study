@@ -323,3 +323,15 @@ print(random.random())
 
 14. 파이썬 format
 print(format(ans,".2f"))
+
+
+15. 매우 큰 수 mod 구하기 (지수승 modulo, 모듈러, 모듈로)
+15-1. a^x 일 경우
+pow(a, x, mo)
+pow(a, x)
+
+15-2. 곱셈 분리
+(a*b) mod n == ((a mod n) * (b mod n)) mod N
+
+15-3. 덧셈 뺄셈 분리
+(a+b) mod n == ((a mod n) + (b mod n)) mod N

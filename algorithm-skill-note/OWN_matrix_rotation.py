@@ -10,12 +10,13 @@ def rotate_90(old):
     
     return new
 
-# easy
-original = [[1, 2], [3, 4], [5, 6]]
-rotated = list(zip(*original[::-1]))
 
-for i in range(len(original)):
-    print(*original[i])
-print()    
-for i in range(len(rotated)):
-    print(*rotated[i])
+# 90, 180, 270:
+# https://shoark7.github.io/programming/algorithm/rotate-2d-array
+
+# with zip (90)
+import numpy as np
+
+def zip_rotate(original):
+    rotated = np.array(list(zip(*original[::-1])))
+    return rotated

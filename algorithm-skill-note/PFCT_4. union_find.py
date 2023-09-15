@@ -23,6 +23,7 @@ def union_parent(a, b):
         parent[a] = b
 
 
+# ---------------------------
 # 입력받기
 v, e = map(int, input().split())
 parent = [0]*(v+1) #0번지는 사용하지 않음
